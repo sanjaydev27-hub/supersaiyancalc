@@ -1,0 +1,54 @@
+
+:root{
+  --bg-dark: #02040a;
+  --bg-cyan: #001826;
+  --panel: rgba(10,14,20,0.75);
+  --muted: #9aa4b2;
+  --accent: #18b6ff; /* cyan accent */
+  --spiderman-blue: #0b56b2;
+  --spiderman-red: #d9342a;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,system-ui,Arial;background:linear-gradient(180deg,#001520 0%, #000a14 100%);color:#e6eef8;overflow:hidden}
+
+/* full-screen animated background canvas - VISIBLE */
+#bg-canvas{position:fixed;inset:0;z-index:0;display:block;pointer-events:none;opacity:1}
+
+/* stage centers calculator with breathing cyan/black surroundings */
+.stage{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;background:transparent}
+
+.app{position:relative;z-index:2;display:grid;grid-template-columns:1fr 320px;gap:18px;width:min(1100px,94vw);padding:28px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));box-shadow:0 10px 60px rgba(0,0,0,0.6), 0 0 40px rgba(24,182,255,0.06);backdrop-filter: blur(6px)}
+.app-header{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center}
+.app-header h1{margin:0;font-size:20px;letter-spacing:1px;color:var(--accent);text-shadow:0 1px 12px rgba(24,182,255,0.12)}
+.controls button{margin-left:8px;padding:8px 10px;border-radius:8px;border:0;background:transparent;color:var(--muted);cursor:pointer}
+/* settings panel */
+.settings{display:flex;gap:10px;align-items:center;margin-top:10px}
+.setting{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.02);padding:6px 8px;border-radius:10px;font-size:13px}
+.setting input[type=range]{width:120px}
+.setting input[type=checkbox]{width:16px;height:16px}
+.calculator{padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,0.02);box-shadow:inset 0 1px 0 rgba(255,255,255,0.02)}
+.display{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:10px;margin-bottom:12px;min-height:72px;border:1px solid rgba(24,182,255,0.04)}
+.expr{color:var(--muted);font-size:14px;min-height:18px}
+.result{font-size:28px;margin-top:6px;color:#dfeefd}
+.pad{display:flex;gap:12px}
+.left{flex:1}
+.right{width:240px}
+.row{display:flex;gap:8px;margin-bottom:8px}
+.row.tall{height:120px;flex-direction:column}
+button{flex:1;padding:12px;border-radius:10px;border:0;background:rgba(255,255,255,0.02);color:var(--muted);font-weight:600;cursor:pointer;transition:transform .06s ease,background .12s,box-shadow .12s}
+button:active{transform:translateY(1px)}
+button.primary{background:linear-gradient(90deg,var(--accent),#3b82f6);color:white;box-shadow:0 6px 18px rgba(24,182,255,0.08)}
+button.big{font-size:18px}
+.functions button{background:rgba(255,255,255,0.02)}
+.sidebar{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:12px;border-radius:14px}
+.sidebar h2{margin:0 0 8px 0;font-size:16px}
+#history-list{list-style:none;padding:0;margin:0;max-height:540px;overflow:auto}
+#history-list li{padding:8px;border-radius:8px;margin-bottom:6px;background:rgba(255,255,255,0.02);font-size:13px;display:flex;justify-content:space-between}
+.sidebar-footer{font-size:12px;color:var(--muted);margin-top:8px}
+
+/* subtle cyan glow around app */
+.stage::before{content:'';position:absolute;inset:calc(50% - 600px) calc(50% - 900px);pointer-events:none;background:radial-gradient(600px 300px at 50% 20%, rgba(24,182,255,0.06), transparent);z-index:1}
+
+/* responsive */
+@media (max-width:900px){.app{grid-template-columns:1fr;}.sidebar{order:99}}
+

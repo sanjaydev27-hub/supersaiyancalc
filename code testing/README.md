@@ -1,4 +1,4 @@
-# NovaCalc — Advanced Scientific Calculator (Static Web)
+# spideycalc— Advanced Scientific Calculator (Static Web)
 
 This is a single-folder static web application implementing a scientific calculator (`NovaCalc`). It uses a custom expression parser (shunting-yard -> RPN) and no external dependencies.
 
@@ -31,3 +31,4 @@ Features:
 - Keyboard support and copy result
 
 If you'd like a build step, progressive web app features, or integration with frameworks (React/Vue), I can scaffold that next.
+
